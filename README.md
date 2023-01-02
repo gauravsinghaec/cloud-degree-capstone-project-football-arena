@@ -1,0 +1,67 @@
+# Footballers Arena Project (Containerised App)
+
+In this project, I am refactoring my footballers catalog monolith app that allows you to find all the footballers and their details e.g club, country age etc. You can edit the players details as well if you find the detail are outdated. To perform any modification, you have to login to the application.
+
+## Table of Contents
+
+- [Footballers Arena Project (Containerised App)](#footballers-arena-project-containerised-app)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+  - [Project URL](#project-url)
+    - [Screenshots](#screenshots)
+  - [Tech stack](#tech-stack)
+  - [Folder Structure](#folder-structure)
+  - [Prerequisites](#prerequisites)
+  - [How to launch the app locally?](#how-to-launch-the-app-locally)
+    - [Installation](#installation)
+  - [Resources](#resources)
+  - [Authors](#authors)
+  - [Acknowledgments](#acknowledgments)
+
+## Getting Started
+The app shows the players listings on the homepage and you can view the details about each players by clicking on them.
+
+To get started right away:
+* start the development server with `docker-compose up`
+
+## Project URL
+
+### Screenshots
+![homepage](https://user-images.githubusercontent.com/15084301/45930171-1e4bce80-bf7a-11e8-804f-83e619ffcbda.png)
+
+## Tech stack
+
+
+## Folder Structure
+After creation, your project should look like this:
+```bash
+├── README.md
+├── fa-user-server # Server having code for authentication(signin, signup)
+├── fa-player-server # Server having code for players actions(create,edit,delete,update)
+└── fa-frontend # Frontend code for react components
+```
+
+## Prerequisites
+* ES6, Promises, REACT, MongoDB, Webpack, Babel
+
+## How to launch the app locally?
+
+### Installation
+
+1. Clone the Project - `https://github.com/gauravsinghaec/footballers-arena-mern.git`
+2. Go into the directory where the project now lives - `cd footballers-arena-mern`
+3. Install the dependencies - `npm install`
+4. Start the app - `npm start`
+```
+The application will be running at http://localhost:3000 URL
+```
+
+## Resources
+* [Pagination reference](https://jsmegatools.com/2017/12/09/creating-a-pagination-component-with-react-js/)
+* [Creating your first MERN stack application](https://hackernoon.com/episode-43-the-art-of-setting-up-a-mern-stack-final-project-week-d554bffe2c0e)
+
+## Authors
+* **Gaurav Singh**
+
+## Acknowledgments
+* **Special thanks to [HackerEarth](https://www.hackerearth.com/) Team**
