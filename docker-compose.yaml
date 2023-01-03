@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  frontend:
+    image: fa-frontend:${TAG}
+    ports:
+      - "3000:80"
