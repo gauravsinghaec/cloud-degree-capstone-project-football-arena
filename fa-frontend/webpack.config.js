@@ -49,7 +49,7 @@ module.exports = {
   devServer: {
     allowedHosts: 'all',
     static: {
-      directory: './clients/',
+      directory: './src/',
     },
     port: process.env.DEV_SERVER_PORT || 3000,
     devMiddleware: {
