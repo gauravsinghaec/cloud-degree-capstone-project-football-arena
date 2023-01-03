@@ -5,6 +5,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
+    path: path.join(__dirname, 'clients'),
+    filename: '[name].js',
     publicPath: 'auto',
   },
   experiments: {

@@ -1,5 +1,5 @@
 ## Build
-FROM node:12-alpine AS development
+FROM node:alpine AS app-builder
 # Create app directory
 WORKDIR /app
 # Install app dependencies
@@ -12,4 +12,4 @@ RUN npm run build
 ## Run 
 FROM nginx:alpine
 #COPY clients /usr/share/nginx/html
-COPY --from=ionic  /app/clients /usr/share/nginx/html
+COPY --from=app-builder  /app/clients /usr/share/nginx/html
