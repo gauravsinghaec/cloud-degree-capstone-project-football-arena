@@ -13,15 +13,13 @@ async function create(userData) {
     email: userData.email,
     name: userData.name,
   };
-  const user = await UserModel.create(userObj);
 
   // hash password
   if (userData.password) {
-    user.hashPassword = await bcrypt.hash(userData.password, 10);
+    userObj.hashPassword = await bcrypt.hash(userData.password, 10);
   }
-
-  // save user
-  await user.save();
+  const user = await UserModel.create(userObj);
+  return user
 }
 
 async function authenticate({ email, password }) {
