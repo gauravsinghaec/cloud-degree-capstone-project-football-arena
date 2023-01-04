@@ -9,6 +9,7 @@ const cors = require('cors');
 // loads environment variables from a .env file into process.env
 dotenv.config();
 const config = require('./config/config');
+const sequelize = require('./db/sequelize')
 
 const apiRoutes = require('./routes');
 
@@ -58,5 +59,10 @@ app.use((err, req, res) => {
       return res.status(500).json({ message: err.message });
   }
 });
+
+(async () => {
+  // Automatically create all tables
+  await sequelize.sync();
+})()
 
 module.exports = app;
