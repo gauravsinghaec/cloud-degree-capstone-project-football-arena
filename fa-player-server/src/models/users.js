@@ -11,10 +11,10 @@ const User = sequelize.define('user', {
     unique: true,
     required: true,
   },
-  hashPassword: {
+  hash_password: {
     type: DataTypes.STRING,
   },
-  imageUrl: {
+  image_url: {
     type: DataTypes.STRING,
   },
   created: {

@@ -11,5 +11,6 @@ const config = {
   'jwt': {
     'secret': process.env.JWT_SECRET,
   },
+  'basePath': '/api/v0',
 };
 module.exports = config

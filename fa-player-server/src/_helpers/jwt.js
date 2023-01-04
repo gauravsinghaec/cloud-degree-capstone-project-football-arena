@@ -1,5 +1,4 @@
 const expressJwt = require('express-jwt');
-const jwt = require('jsonwebtoken');
 const config = require('../config/config');
 const userController = require('../controllers/userController');
 
@@ -38,9 +37,9 @@ function authHandler() {
   return expressJwt({ secret: jwt.secret, isRevoked, getToken }).unless({
     path: [
       // auth routes that don't require authentication
-      '/auth/signin',
-      '/auth/signup',
-      '/api/getAllPlayers',
+      `${config.basePath}/auth/signin`,
+      `${config.basePath}/auth/signup`,
+      `${config.basePath}/api/getAllPlayers`,
     ],
   });
 }

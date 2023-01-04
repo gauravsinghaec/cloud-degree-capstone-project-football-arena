@@ -8,6 +8,7 @@ const cors = require('cors');
 
 // loads environment variables from a .env file into process.env
 dotenv.config();
+const config = require('./config/config');
 
 const apiRoutes = require('./routes');
 
@@ -26,11 +27,11 @@ app.use(express.static(path.join(__dirname, '../clients')));
 
 
 // api routes
-app.use('/api/v0/', apiRoutes);
+app.use(config.basePath, apiRoutes);
 
 // Root URI call
 app.get('/', async (req, res) => {
-  res.send('/api/v0/');
+  res.send(config.basePath);
 });
 
 // catch 404 and forward to error handler
