@@ -9,13 +9,13 @@ const Footballer = sequelize.define('footballer', {
   nationality: {
     type: DataTypes.STRING,
   },
-  national_position: {
+  nationalPosition: {
     type: DataTypes.STRING,
   },
   club: {
     type: DataTypes.STRING,
   },
-  club_position: {
+  clubPosition: {
     type: DataTypes.STRING,
   },
   age: {
@@ -23,17 +23,7 @@ const Footballer = sequelize.define('footballer', {
   },
   rating: {
     type: DataTypes.INTEGER,
-  },
-  created: {
-    type: DataTypes.DATE,
-    required: true,
-    default: Date.now,
-  },
-  updated: {
-    type: DataTypes.DATE,
-    required: true,
-    default: Date.now,
-  },
+  }
 });
 
 module.exports = Footballer;

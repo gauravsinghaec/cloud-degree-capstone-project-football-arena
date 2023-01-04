@@ -11,22 +11,12 @@ const User = sequelize.define('user', {
     unique: true,
     required: true,
   },
-  hash_password: {
+  hashPassword: {
     type: DataTypes.STRING,
   },
-  image_url: {
+  imageUrl: {
     type: DataTypes.STRING,
-  },
-  created: {
-    type: DataTypes.DATE,
-    required: true,
-    default: Date.now,
-  },
-  updated: {
-    type: DataTypes.DATE,
-    required: true,
-    default: Date.now,
-  },
+  }
 });
 
 module.exports = User;

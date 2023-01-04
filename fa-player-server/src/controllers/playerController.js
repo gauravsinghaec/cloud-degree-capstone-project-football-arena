@@ -27,9 +27,9 @@ const postHandler = async (req) => {
     name: playerDataFromReq.name,
     age: playerDataFromReq.age,
     nationality: playerDataFromReq.nationality,
-    national_position: playerDataFromReq.nationalityPos,
+    nationalPosition: playerDataFromReq.nationalityPos,
     club: playerDataFromReq.club,
-    club_position: playerDataFromReq.clubPos,
+    clubPosition: playerDataFromReq.clubPos,
     rating: playerDataFromReq.rating,
   };
   const result = await FootballerModel.create(playerObj).catch((err) => {
@@ -51,9 +51,9 @@ const putHandler = async (req) => {
     name: playerDataFromReq.name,
     age: playerDataFromReq.age,
     nationality: playerDataFromReq.nationality,
-    national_position: playerDataFromReq.nationalityPos,
+    nationalPosition: playerDataFromReq.nationalityPos,
     club: playerDataFromReq.club,
-    club_position: playerDataFromReq.clubPos,
+    clubPosition: playerDataFromReq.clubPos,
     rating: playerDataFromReq.rating,
   };
   const result = await FootballerModel.update(playerObj, { where: id }).catch((err) => {
