@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 // loads environment variables from a .env file into process.env
 dotenv.config();
@@ -11,6 +12,7 @@ dotenv.config();
 const apiRoutes = require('./routes');
 
 const app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, '../clients'));
