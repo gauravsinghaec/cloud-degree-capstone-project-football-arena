@@ -61,9 +61,14 @@ app.use((err, req, res) => {
   }
 });
 
+
 (async () => {
+  sequelize.beforeSync(async () => {
+    await sequelize.query('CREATE SEQUENCE IF NOT EXISTS footballers_id_seq CACHE 1');
+    await sequelize.query('CREATE SEQUENCE IF NOT EXISTS users_id_seq CACHE 1');
+  });
   // Automatically create all tables
-  await sequelize.sync();
+  await sequelize.sync().catch(err => console.log(err));
 })()
 
 module.exports = app;

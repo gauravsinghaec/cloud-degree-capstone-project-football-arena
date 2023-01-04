@@ -1,7 +1,12 @@
 const sequelize = require('../db/sequelize')
-const { DataTypes } = require("sequelize");
+const { literal, DataTypes } = require("sequelize");
 
 const Footballer = sequelize.define('footballer', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    defaultValue: literal("nextval('footballers_id_seq')"),
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false
