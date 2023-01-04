@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: gauravsinghaec/fa-frontend:${UI_TAG}
+        image: gauravsinghaec/fa-frontend:v2
         ports:
         - containerPort: 80
         resources:

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend-auth
-        image: gauravsinghaec/fa-user-server:${USER_TAG}
+        image: gauravsinghaec/fa-user-server:v1
         envFrom:
           - secretRef:
               name: fa-secret

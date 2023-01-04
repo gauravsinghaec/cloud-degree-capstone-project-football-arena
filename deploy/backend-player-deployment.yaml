@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend-player
-        image: gauravsinghaec/fa-player-server:${PLAYER_TAG}
+        image: gauravsinghaec/fa-player-server:v1
         envFrom:
           - secretRef:
               name: fa-secret

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: reverseproxy
-        image: gauravsinghaec/fa-reverseproxy:${PROXY_TAG}
+        image: gauravsinghaec/fa-reverseproxy:v1
         imagePullPolicy: Always
         resources:
           requests:
