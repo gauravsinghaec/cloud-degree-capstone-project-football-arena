@@ -5,10 +5,17 @@ services:
     image: fa-frontend:${UI_TAG}
     ports:
       - "3000:80"
+
+  reverseproxy:
+      image: fa-reverseproxy:${PROXY_TAG}
+      ports:
+          - 4000:4000
+      restart: always
+      depends_on:
+        - backend-user
+        - backend-player
   backend-user:
     image: fa-user-server:${USER_TAG}
-    ports:
-    - "4000:4000"
     environment:
       POSTGRES_USERNAME: $POSTGRES_USERNAME
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD 
@@ -21,8 +28,6 @@ services:
       APP_URL: "http://localhost:3000"
   backend-player:
     image: fa-player-server:${PLAYER_TAG}
-    ports:
-      - "4001:4000"
     environment:
       POSTGRES_USERNAME: $POSTGRES_USERNAME
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD 

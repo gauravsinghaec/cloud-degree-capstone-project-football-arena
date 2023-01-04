@@ -5,6 +5,10 @@ services:
     build:
       context: ./fa-frontend
     image: fa-frontend:${UI_TAG}
+  reverseproxy:
+    build:
+      context: ./fa-reverseproxy
+    image: fa-reverseproxy:${PROXY_TAG}
   backend-user:
     build:
       context: ./fa-user-server
