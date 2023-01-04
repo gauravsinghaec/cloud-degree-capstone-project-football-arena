@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+  labels:
+    service: fa-frontend
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    service: fa-frontend
+  type: ClusterIP

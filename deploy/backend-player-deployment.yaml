@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-player
+  labels:
+    app: fa-player-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fa-player-server
+  template:
+    metadata:
+      labels:
+        app: fa-player-server
+    spec:
+      containers:
+      - name: backend-player
+        image: gauravsinghaec/fa-player-server:${PLAYER_TAG}
+        envFrom:
+          - secretRef:
+              name: fa-secret
+          - configMapRef:
+              name: fa-config-map
+        ports:
+        - containerPort: 4000
+        resources:
+          requests:
+            memory: 1Gi
+          limits:
+            memory: 1.5Gi

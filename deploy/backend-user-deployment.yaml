@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-auth
+  labels:
+    app: fa-user-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fa-user-server
+  template:
+    metadata:
+      labels:
+        app: fa-user-server
+    spec:
+      containers:
+      - name: backend-auth
+        image: gauravsinghaec/fa-user-server:${USER_TAG}
+        envFrom:
+          - secretRef:
+              name: fa-secret
+          - configMapRef:
+              name: fa-config-map
+        ports:
+        - containerPort: 4000
+        resources:
+          requests:
+            memory: 1Gi
+            cpu: "250m"
+          limits:
+            memory: 1.5Gi
+            cpu: "500m"

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reverseproxy
+  labels:
+    service: fa-reverseproxy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      service: fa-reverseproxy
+  template:
+    metadata:
+      labels:
+        service: fa-reverseproxy
+    spec:
+      containers:
+      - name: reverseproxy
+        image: gauravsinghaec/fa-reverseproxy:${PROXY_TAG}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: 500Mi
+            cpu: "250m"
+          limits:
+            memory: 1Gi
+            cpu: "500m"  
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
