@@ -1,0 +1,37 @@
+language: node_js
+node_js:
+  - 13
+
+services:
+  - docker
+
+# Pre-testing installs
+install:
+  - echo "nothing needs to be installed"
+
+# Scripts to be run such as tests
+before_script:
+  - echo "no tests"
+
+script:
+  - docker --version # print the version for logging
+
+# build
+  - docker build -t fa-user-server ./fa-user-server
+  - docker build -t fa-player-server ./fa-player-server
+  - docker build -t fa-reverseproxy ./fa-reverseproxy
+  - docker build -t fa-frontend ./fa-frontend
+
+# Tagging
+  - docker tag fa-user-server gauravsinghaec/fa-user-server:$USER_TAG
+  - docker tag fa-player-server gauravsinghaec/fa-player-server:$PLAYER_TAG
+  - docker tag fa-reverseproxy gauravsinghaec/fa-reverseproxy:$PROXY_TAG
+  - docker tag fa-frontend gauravsinghaec/fa-frontend:$UI_TAG
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push gauravsinghaec/fa-user-server:$USER_TAG
+  - docker push gauravsinghaec/fa-player-server:$PLAYER_TAG
+  - docker push gauravsinghaec/fa-reverseproxy:$PROXY_TAG
+  - docker push gauravsinghaec/fa-frontend:$UI_TAG
+
