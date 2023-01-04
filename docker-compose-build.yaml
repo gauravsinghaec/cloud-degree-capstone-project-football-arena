@@ -9,3 +9,7 @@ services:
     build:
       context: ./fa-user-server
     image: fa-user-server:${USER_TAG}
+  backend-player:
+    build:
+      context: ./fa-player-server
+    image: fa-player-server:${PLAYER_TAG}
