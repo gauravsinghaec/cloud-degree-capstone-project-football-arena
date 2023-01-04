@@ -13,16 +13,16 @@ class PlayerEditForm extends Component {
     event.preventDefault();
     const { playerObj, updatePageMode } = this.props;
     const reqBody = {
-      name: playerObj.Name,
-      age: playerObj.Age,
-      nationality: playerObj.Nationality,
-      nationalityPos: playerObj.National_Position,
-      club: playerObj.Club,
-      clubPos: playerObj.Club_Position,
-      rating: playerObj.Rating,
+      name: playerObj.name,
+      age: playerObj.age,
+      nationality: playerObj.nationality,
+      nationalityPos: playerObj.nationalPosition,
+      club: playerObj.club,
+      clubPos: playerObj.clubPosition,
+      rating: playerObj.rating,
     };
     // Update the footballer's data in the server
-    FootballersAPI.updatePlayerDetails(playerObj._id, reqBody)
+    FootballersAPI.updatePlayerDetails(playerObj.id, reqBody)
       .then((info) => {
         console.log('Player update succeeded');
         updatePageMode('view');
@@ -38,43 +38,43 @@ class PlayerEditForm extends Component {
           <div className="input-container">
             <label htmlFor="name">
               <span>Name</span>
-              <input id="name" type="text" name="name" onChange={e => handleInputChange({ Name: e.target.value })} value={playerObj.Name} autoFocus />
+              <input id="name" type="text" name="name" onChange={e => handleInputChange({ name: e.target.value })} value={playerObj.name} autoFocus />
             </label>
           </div>
           <div className="input-container">
             <label htmlFor="age">
               <span>Age</span>
-              <input id="age" type="number" name="age" onChange={e => handleInputChange({ Age: e.target.value })} value={playerObj.Age} />
+              <input id="age" type="number" name="age" onChange={e => handleInputChange({ age: e.target.value })} value={playerObj.age} />
             </label>
           </div>
           <div className="input-container">
             <label htmlFor="rating">
               <span>Rating</span>
-              <input id="rating" type="number" name="rating" onChange={e => handleInputChange({ Rating: e.target.value })} value={playerObj.Rating} />
+              <input id="rating" type="number" name="rating" onChange={e => handleInputChange({ rating: e.target.value })} value={playerObj.rating} />
             </label>
           </div>
           <div className="input-container">
             <label htmlFor="club">
               <span>Club</span>
-              <input id="club" type="text" name="club" onChange={e => handleInputChange({ Club: e.target.value })} value={playerObj.Club} />
+              <input id="club" type="text" name="club" onChange={e => handleInputChange({ club: e.target.value })} value={playerObj.club} />
             </label>
           </div>
           <div className="input-container">
             <label htmlFor="club-position">
               <span>Club Position</span>
-              <input id="club-position" type="text" name="clubPos" onChange={e => handleInputChange({ Club_Position: e.target.value })} value={playerObj.Club_Position} />
+              <input id="club-position" type="text" name="clubPos" onChange={e => handleInputChange({ clubPosition: e.target.value })} value={playerObj.clubPosition} />
             </label>
           </div>
           <div className="input-container">
             <label htmlFor="nationality">
               <span>Nationality</span>
-              <input id="nationality" type="text" name="nationality" onChange={e => handleInputChange({ Nationality: e.target.value })} value={playerObj.Nationality} />
+              <input id="nationality" type="text" name="nationality" onChange={e => handleInputChange({ nationality: e.target.value })} value={playerObj.nationality} />
             </label>
           </div>
           <div className="input-container">
             <label htmlFor="nationality-position">
               <span>National Position</span>
-              <input id="nationality-position" type="text" name="nationalityPos" onChange={e => handleInputChange({ National_Position: e.target.value })} value={playerObj.National_Position} />
+              <input id="nationality-position" type="text" name="nationalityPos" onChange={e => handleInputChange({ nationalPosition: e.target.value })} value={playerObj.nationalPosition} />
             </label>
           </div>
           <div className="form-button-wrapper">

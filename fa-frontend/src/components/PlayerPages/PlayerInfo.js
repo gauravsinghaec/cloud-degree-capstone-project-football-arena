@@ -54,7 +54,7 @@ class PlayerInfo extends Component {
       <React.Fragment>
         <PlayerData>
           <Alert color="danger" isOpen={this.state.alertVisible} toggle={this.onDismiss}>{this.state.alertMsg}</Alert>
-          {playerObj.Name && (<PlayerImage imageName={playerObj.Name} />)}
+          {playerObj.name && (<PlayerImage imageName={playerObj.name} />)}
           {pageMode === 'view' && (<PlayerViewData {...someProps} />)}
           {pageMode === 'edit' && (<PlayerEditForm {...someProps} handleInputChange={this.handleInputChange} />)}
         </PlayerData>
@@ -72,7 +72,7 @@ const PlayerData = ({ children }) => (
 
 const PlayerImage = ({ imageName }) => (
   <div className="image-container">
-    <img className="player-image" src={`../images/${imageName}.png`} alt="pic of player" />
+    <img className="player-image" src={`../assets/images/${imageName}.png`} alt="pic of player" />
   </div>
 );
 

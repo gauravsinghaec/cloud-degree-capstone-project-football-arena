@@ -8,31 +8,31 @@ const PlayerViewData = ({ playerObj, updatePageMode }) => (
       <tbody>
         <tr className="tablerow">
           <td>Name</td>
-          <td>{playerObj.Name}</td>
+          <td>{playerObj.name}</td>
         </tr>
         <tr className="tablerow">
           <td>Age</td>
-          <td>{playerObj.Age}</td>
+          <td>{playerObj.age}</td>
         </tr>
         <tr className="tablerow">
           <td>Rating</td>
-          <td>{playerObj.Rating}</td>
+          <td>{playerObj.rating}</td>
         </tr>
         <tr className="tablerow">
           <td>Club</td>
-          <td>{playerObj.Club}</td>
+          <td>{playerObj.club}</td>
         </tr>
         <tr className="tablerow">
           <td>Club Position</td>
-          <td>{playerObj.Club_Position}</td>
+          <td>{playerObj.clubPosition}</td>
         </tr>
         <tr className="tablerow">
           <td>Nationality</td>
-          <td>{playerObj.Nationality}</td>
+          <td>{playerObj.nationality}</td>
         </tr>
         <tr className="tablerow">
           <td>Nat. Position</td>
-          <td>{playerObj.National_Position}</td>
+          <td>{playerObj.nationalPosition}</td>
         </tr>
       </tbody>
     </table>

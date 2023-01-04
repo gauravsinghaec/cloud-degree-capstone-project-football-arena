@@ -7,14 +7,14 @@ const PlayerDetails = ({ footballer }) => (
   <article className="gv-grid-cell">
     <div className="gv-grid-cell-inner">
       <div className="gv-grid-cell-image-container">
-        <img className="gv-grid-cell-image" src={`images/${footballer.Name}.png`} alt="" />
+        <img className="gv-grid-cell-image" src={`images/${footballer.name}.png`} alt="" />
       </div>
       <div className="gv-grid-cell-info">
-        <div className="gv-grid-cell-title">{ footballer.Name }</div>
-        <div className="gv-grid-cell-subtitle">{ footballer.Nationality }</div>
+        <div className="gv-grid-cell-title">{footballer.name}</div>
+        <div className="gv-grid-cell-subtitle">{footballer.nationality}</div>
       </div>
     </div>
-    <Link to={`/player/${footballer._id}`} className="player-link">
+    <Link to={`/player/${footballer.id}`} className="player-link">
       <span className="player-link-label"><strong>Info</strong></span>
     </Link>
   </article>
@@ -24,8 +24,8 @@ PlayerDetails.propTypes = { footballer: PropTypes.instanceOf(Object).isRequired 
 
 const PlayerList = ({ footballers }) => (
   <section className="players-container">
-    { footballers.map(footballer => (
-      <PlayerDetails key={footballer._id} footballer={footballer} />
+    {footballers.map(footballer => (
+      <PlayerDetails key={footballer.id} footballer={footballer} />
     ))}
   </section>
 );
