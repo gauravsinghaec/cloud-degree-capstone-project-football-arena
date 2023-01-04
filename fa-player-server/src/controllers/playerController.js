@@ -1,37 +1,27 @@
 const FootballerModel = require('../models/footballer');
 
-const getPlayerList = (filterObj, callback) => {
-  const queryFilter = { $and: [{}] };
+const getPlayerList = async (filterObj, callback) => {
+  const queryFilter = { where: {} };
   if (filterObj.player_name) {
-    queryFilter.$and.push({ name: filterObj.player_name });
+    queryFilter.where.name = filterObj.player_name;
   }
-  FootballerModel.find(queryFilter, { name: 1, nationality: 1 }, (err, result) => {
-    if (err) {
-      console.log('something went wrong while fething players from database.', err);
-      callback(err, undefined);
-    } else if (result) {
-      callback(undefined, result);
-    } else if (!result) {
-      callback(undefined, undefined);
-    }
-  });
+  const result = await FootballerModel.findAll(queryFilter).catch((err) => {
+    console.log('something went wrong while fething players from database.', err);
+    callback(err, undefined);
+  })
+  callback(undefined, result);
 };
 
-const getHandler = (req) => {
+const getHandler = async (req) => {
   const { id } = req.params;
-  return new Promise((resolve, reject) => {
-    FootballerModel.findById(id, (err, playerInfo) => {
-      if (err) {
-        console.log('something went wrong while finding player in database.', err);
-        reject(err);
-      } else {
-        resolve(playerInfo);
-      }
-    });
-  });
+  const playerInfo = await FootballerModel.findById(id).catch((err) => {
+    console.log('something went wrong while finding player in database.', err);
+    throw Error(err)
+  })
+  return playerInfo
 };
 
-const postHandler = (req) => {
+const postHandler = async (req) => {
   const playerDataFromReq = req.body;
   const playerObj = {
     name: playerDataFromReq.name,
@@ -42,22 +32,21 @@ const postHandler = (req) => {
     club_position: playerDataFromReq.clubPos,
     rating: playerDataFromReq.rating,
   };
-  const player = new FootballerModel(playerObj);
-  return new Promise((resolve, reject) => {
-    player.save((err, playerInfo) => {
-      if (err) {
-        console.log('something went wrong while creating player in database.', err);
-        reject(err);
-      } else {
-        resolve(playerInfo);
-      }
-    });
+  const result = await FootballerModel.create(playerObj).catch((err) => {
+    console.log('something went wrong while creating player in database.', err);
+    throw Error(err)
   });
+  return result
 };
 
-const putHandler = (req) => {
+const putHandler = async (req) => {
   const { id } = req.params;
   const playerDataFromReq = req.body;
+  const player = await FootballerModel.findById(id);
+  if (!player) {
+    console.log('can not find player in database.', err);
+    throw Error(err)
+  }
   const playerObj = {
     name: playerDataFromReq.name,
     age: playerDataFromReq.age,
@@ -67,30 +56,25 @@ const putHandler = (req) => {
     club_position: playerDataFromReq.clubPos,
     rating: playerDataFromReq.rating,
   };
-  return new Promise((resolve, reject) => {
-    FootballerModel.findByIdAndUpdate(id, playerObj, { new: true }, (err, playerInfo) => {
-      if (err) {
-        console.log('something went wrong while updating player in database.', err);
-        reject(err);
-      } else {
-        resolve(playerInfo);
-      }
-    });
+  const result = await FootballerModel.update(playerObj, { where: id }).catch((err) => {
+    console.log('something went wrong while updating player in database.', err);
+    throw Error(err)
   });
+  return result
 };
 
-const deleteHandler = (req) => {
+const deleteHandler = async (req) => {
   const { id } = req.params;
-  return new Promise((resolve, reject) => {
-    FootballerModel.findByIdAndRemove(id, (err, playerInfo) => {
-      if (err) {
-        console.log('something went wrong while deleting player in database.', err);
-        reject(err);
-      } else {
-        resolve(playerInfo);
-      }
-    });
+  const player = await FootballerModel.findById(id);
+  if (!player) {
+    console.log('can not find player in database.', err);
+    throw Error(err)
+  }
+  const result = await FootballerModel.destroy({ where: id }).catch((err) => {
+    console.log('something went wrong while deleting player in database.', err);
+    throw Error(err)
   });
+  return result
 };
 
 module.exports = {
