@@ -16,8 +16,6 @@ services:
       - backend-player
   backend-user:
     image: fa-user-server:${USER_TAG}
-    ports:
-      - 4001:4000
     environment:
       POSTGRES_USERNAME: $POSTGRES_USERNAME
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD 
@@ -27,11 +25,9 @@ services:
       AWS_PROFILE: $AWS_PROFILE 
       AWS_BUCKET: $AWS_BUCKET
       JWT_SECRET: $JWT_SECRET
-      APP_URL: "http://localhost:3000"
+      APP_URL: $APP_URL
   backend-player:
     image: fa-player-server:${PLAYER_TAG}
-    ports:
-      - 4002:4000
     environment:
       POSTGRES_USERNAME: $POSTGRES_USERNAME
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD 
@@ -41,4 +37,4 @@ services:
       AWS_PROFILE: $AWS_PROFILE 
       AWS_BUCKET: $AWS_BUCKET
       JWT_SECRET: $JWT_SECRET
-      APP_URL: "http://localhost:3000"
+      APP_URL: $APP_URL
