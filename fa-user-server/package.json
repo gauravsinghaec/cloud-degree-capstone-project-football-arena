@@ -18,5 +18,8 @@
   },
   "scripts": {
     "start": "nodemon --exec src/bin/www"
+  },
+  "devDependencies": {
+    "pg": "^8.8.0"
   }
 }
