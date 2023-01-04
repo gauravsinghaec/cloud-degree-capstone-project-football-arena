@@ -15,7 +15,7 @@ const getPlayerList = async (filterObj, callback) => {
 
 const getHandler = async (req) => {
   const { id } = req.params;
-  const playerInfo = await FootballerModel.findById(id).catch((err) => {
+  const playerInfo = await FootballerModel.findByPk(id).catch((err) => {
     console.log('something went wrong while finding player in database.', err);
     throw Error(err)
   })
