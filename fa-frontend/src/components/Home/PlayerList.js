@@ -7,7 +7,7 @@ const PlayerDetails = ({ footballer }) => (
   <article className="gv-grid-cell">
     <div className="gv-grid-cell-inner">
       <div className="gv-grid-cell-image-container">
-        <img className="gv-grid-cell-image" src={`images/${footballer.name}.png`} alt="" />
+        <img className="gv-grid-cell-image" src={`assets/images/${footballer.name}.png`} alt="" />
       </div>
       <div className="gv-grid-cell-info">
         <div className="gv-grid-cell-title">{footballer.name}</div>
