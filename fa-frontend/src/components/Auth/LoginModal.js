@@ -48,6 +48,7 @@ export default class LoginModal extends Component {
           this.setState({ alertVisible: true, alertMsg: data.message });
         } else {
           console.log('Signin sucessful.', data); // eslint-disable-line no-console
+          window.location = window.origin;
         }
       })
       .catch(e => console.log(e));
