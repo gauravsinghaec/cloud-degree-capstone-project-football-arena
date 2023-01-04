@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: gauravsinghaec/fa-frontend:v4
+        image: gauravsinghaec/fa-frontend:v5
         ports:
         - containerPort: 80
         resources:
