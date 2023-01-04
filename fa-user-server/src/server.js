@@ -61,6 +61,9 @@ app.use((err, req, res) => {
 });
 
 (async () => {
+  sequelize.beforeSync(async () => {
+    await sequelize.query('CREATE SEQUENCE IF NOT EXISTS users_id_seq CACHE 1');
+  });
   // Automatically create all tables
   await sequelize.sync();
 })()

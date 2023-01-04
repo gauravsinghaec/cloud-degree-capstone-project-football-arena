@@ -13,7 +13,7 @@ async function create(userData) {
     email: userData.email,
     name: userData.name,
   };
-  const user = new UserSchema(userObj);
+  const user = await UserModel.create(userObj);
 
   // hash password
   if (userData.password) {
@@ -42,7 +42,7 @@ async function authenticate({ email, password }) {
 }
 
 async function getById(id) {
-  const user = await UserModel.findById(id);
+  const user = await UserModel.findByPk(id);
   return user;
 }
 
