@@ -1,4 +1,5 @@
 import decode from 'jwt-decode';
+import config from '../config/config';
 
 const headers = {
   Accept: 'application/json',
@@ -83,7 +84,7 @@ export const loggedIn = () => {
  *      None
  */
 export const signinUser = reqBody => (
-  fetch('/auth/signin', {
+  fetch(`${config.apiHost}/auth/signin`, {
     method: 'POST',
     headers,
     body: JSON.stringify(reqBody),
@@ -100,7 +101,7 @@ export const signinUser = reqBody => (
 );
 
 export const signupUser = reqBody => (
-  fetch('/auth/signup', {
+  fetch(`${config.apiHost}/auth/signup`, {
     method: 'POST',
     headers,
     body: JSON.stringify(reqBody),

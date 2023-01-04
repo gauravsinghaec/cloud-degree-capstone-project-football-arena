@@ -1,3 +1,5 @@
+import config from '../config/config';
+
 const headers = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
@@ -5,7 +7,7 @@ const headers = {
 };
 
 export const getAllPlayers = () => (
-  fetch('/api/getAllPlayers', { headers })
+  fetch(`${config.apiHost}/api/getAllPlayers`, { headers })
     .then((res) => {
       if (res.status === 200) {
         return res.json().then((playersData) => {
@@ -21,7 +23,7 @@ export const getAllPlayers = () => (
 );
 
 export const getPlayerDetails = id => (
-  fetch(`/api/player/${id}`, { headers })
+  fetch(`${config.apiHost}/api/player/${id}`, { headers })
     .then(res => (
       res.json().then((data) => {
         if (res.status === 200) {
@@ -33,7 +35,7 @@ export const getPlayerDetails = id => (
 );
 
 export const updatePlayerDetails = (id, reqBody) => (
-  fetch(`/api/player/${id}`, {
+  fetch(`${config.apiHost}/api/player/${id}`, {
     method: 'PUT',
     headers,
     body: JSON.stringify(reqBody),
