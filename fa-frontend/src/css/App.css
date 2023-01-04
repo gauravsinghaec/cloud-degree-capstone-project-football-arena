@@ -362,7 +362,6 @@ tr.tablerow:first-child {
 /* Styles for Edit player form */
 .form-container {
   padding: 20px 0;
-  background: #333;
   opacity: 0.85;
   border-radius: 5px; }
 
