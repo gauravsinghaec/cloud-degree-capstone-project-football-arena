@@ -4,4 +4,8 @@ services:
   frontend:
     build:
       context: ./fa-frontend
-    image: fa-frontend:${TAG}
+    image: fa-frontend:${UI_TAG}
+  backend-user:
+    build:
+      context: ./fa-user-server
+    image: fa-user-server:${USER_TAG}
