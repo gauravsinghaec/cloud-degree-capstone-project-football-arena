@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 // loads environment variables from a .env file into process.env
 dotenv.config();
 
-const authRoutes = require('./routes/api/auth');
+const apiRoutes = require('./routes');
 
 const app = express();
 
@@ -24,11 +24,11 @@ app.use(express.static(path.join(__dirname, '../clients')));
 
 
 // api routes
-app.use('/auth', authRoutes);
+app.use('/api/v0/', apiRoutes);
 
 // Root URI call
 app.get('/', async (req, res) => {
-  res.send('/auth');
+  res.send('/api/v0/');
 });
 
 // catch 404 and forward to error handler

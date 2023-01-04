@@ -10,8 +10,7 @@ dotenv.config();
 
 const authHandler = require('./_helpers/jwt');
 
-const appRoutes = require('./routes/routes');
-const apiRoutes = require('./routes/api/player');
+const apiRoutes = require('./routes');
 
 const app = express();
 
@@ -26,8 +25,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../clients')));
 
 // use JWT auth to secure the api
-app.use('/api', authHandler(), apiRoutes);
-app.use('/', appRoutes);
+app.use('/api/v0/', authHandler(), apiRoutes);
+
+// Root URI call
+app.get('/', async (req, res) => {
+  res.send('/api/v0/');
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
